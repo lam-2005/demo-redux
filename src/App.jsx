@@ -99,7 +99,7 @@ function App() {
               </li>
             );
           })}
-        {brandErrorApi === "error" && console.log("co loi")}
+        {brandsStatusApi === "error" && console.log("co loi")}
       </ul>
     </>
   );
