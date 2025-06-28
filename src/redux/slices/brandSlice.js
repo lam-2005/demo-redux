@@ -9,6 +9,7 @@ const brandSlice = createSlice({
   initialState: { data: [], status: "idle", error: "" },
   extraReducers: (builder) => {
     builder
+      // fetch api
       .addCase(fetchBrands.pending, (state, action) => {
         state.status = "Loading...";
       })
@@ -20,6 +21,7 @@ const brandSlice = createSlice({
         state.status = "error";
         state.error = action.payload || "Co loi xay ra";
       })
+      // Thêm
       .addCase(addBrands.fulfilled, (state, action) => {
         state.data.push(action.payload);
       })
@@ -27,6 +29,7 @@ const brandSlice = createSlice({
         state.status = "error";
         state.error = action.payload || "Co loi xay ra";
       })
+      // Sửa
       .addCase(updateBrands.fulfilled, (state, action) => {
         const index = state.data.findIndex(
           (brand) => brand.id === action.payload.id
@@ -40,6 +43,7 @@ const brandSlice = createSlice({
         state.status = "error";
         state.error = action.payload || "Co loi xay ra";
       })
+      //Xóa
       .addCase(deleteBrands.fulfilled, (state, action) => {
         state.data = state.data.filter((brand) => brand.id !== action.payload);
       })
@@ -58,13 +62,13 @@ export const fetchBrands = createAsyncThunk("brand/fetchBrands", async () => {
     const data = await res.json();
     return data;
   } catch (error) {
-    if (error.respose)
-      // Loi 400/500
-      return rejectWithValue(error.respose.data.message);
-    else if (error.request)
-      // k ket noi dc toi server
-      return rejectWithValue("Loi ket noi sevrer");
-    else rejectWithValue(error.message);
+    // if (error.respose)
+    //   // Loi 400/500
+    //   return rejectWithValue(error.respose.data.message);
+    // else if (error.request)
+    //   // k ket noi dc toi server
+    //   return rejectWithValue("Loi ket noi sevrer");
+    // else rejectWithValue(error.message);
   }
 });
 

@@ -18,33 +18,49 @@ function App() {
   const brandData = useSelector(brandDataSelector);
   const brandsStatusApi = useSelector(brandStatusSelector);
   const brandErrorApi = useSelector(brandErrorSelector);
+
+  // thêm
   const [formData, setFormData] = useState({
     name: "",
   });
+
+  // sửa
   const [formUpdateData, setFormUpdateData] = useState({ name: "" });
   const [isEdit, setIsEdit] = useState(null);
+
+  // Chỗ nhập vào input
   const handleAddInput = (e) => {
     setFormData({
       ...formData,
       name: e.target.value,
     });
   };
+
+  // fetch api
   useEffect(() => {
     dispatch(fetchBrands());
   }, []);
+
+  // Xử lí thêm
   const handleAddData = () => {
     dispatch(addBrands(formData));
     setFormData({ ...formData, name: "" });
   };
+
+  // Chỗ nhập vào input sửa
   const handleUpdateChange = (e) => {
     setFormUpdateData({
       ...formUpdateData,
       name: e.target.value,
     });
   };
+
+  //xử lí sửa
   const handleUpdate = (id) => {
     dispatch(updateBrands({ id: id, formData: formUpdateData }));
   };
+
+  //xử lí xóa
   const hanldeDelete = (id) => {
     dispatch(deleteBrands(id));
   };
