@@ -37,9 +37,6 @@ function App() {
   };
 
   // fetch api
-  useEffect(() => {
-    dispatch(fetchBrands());
-  }, []);
 
   // Xử lí thêm
   const handleAddData = () => {

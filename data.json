@@ -337,7 +337,12 @@
       "trailer": "https://www.youtube.com/embed/9MFHYvdtrRw?si=7t9CziixhOnKW-ec"
     }
   ],
-  "brand": [],
+  "brand": [
+    {
+      "id": "c782",
+      "name": "123ádad"
+    }
+  ],
   "location": [
     {
       "id": "1",
